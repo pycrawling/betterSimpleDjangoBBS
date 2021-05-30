@@ -1,0 +1,63 @@
+<!--templates/board/article_list.html-->
+{% extends 'base.html' %}
+{% block title %}index{% endblock %}
+{% block content %}
+{% if object_list %}
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">id</th>
+        <th scope="col">title</th>
+        <th scope="col">writer</th>
+        <th scope="col">created</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for each in object_list %}
+    <tr>
+        <th scope="row">{{each.id}}</th>
+        <td><a href="{% url 'detail' each.id%}">{{ each.title }}</a></td>
+        <td>{{each.author}}</td>
+        <td>{{each.created_at|date:'Y-m-d, H:i'}}</td>
+    </tr>
+    </tbody>
+    {% endfor %}
+</table>
+{% else %}
+<p>an empty list</p>
+{% endif %}
+
+{% if is_paginated %}
+<nav>
+    <ul class="pagination pagination-sm justify-content-center"> {% if page_obj.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+        {% else %}
+        <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+        {% endif %} {% for i in paginator.page_range %} {% if page_obj.number == i %}
+        <li class="page-item active" aria-current="page"><span class="page-link">{{ i }}</span></li>
+        {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %} {% endfor %} {% if page_obj.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+        {% else %}
+        <li class="page-item disabled"><span class="page-link" aria-hidden="true">&raquo;</span></li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+
+<!--{% if is_paginated %}-->
+<!--<p>-->
+<!-- {% if page_obj.has_previous %}-->
+<!-- <a href='?page={{page_obj.previous_page_number}}'>Previous</a>-->
+<!-- {% endif %}-->
+<!-- Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}-->
+<!-- {% if page_obj.has_next %}-->
+<!-- <a href='?page={{page_obj.next_page_number}}'>Next</a>-->
+<!-- {% endif %}-->
+<!--</p>-->
+<!--{% endif %}-->
+
+<a href="{% url 'create' %}" class="btn btn-primary">write</a>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+<!--templates/board/article_detail.html-->
+{% extends 'base.html' %}
+{% block title %}{{object.title}}{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">{{object.title}}</h5>
+        <small>by {{object.author}}</small>
+    </div>
+    <div class="card-body">
+        <p style="text-align:right"><small>created at {{object.created_at|date:'Y-m-d, H:i'}}<br>
+            modified at {{object.modified_at|date:'Y-m-d, H:i'}}</small></p>
+        <p class="card-text">{{object.content}}</p>
+        <div class="text-end">
+            <a href="{% url 'update' object.id %}" class="btn btn-primary btn-sm">modify</a>
+            <a href="{% url 'delete' object.id %}" class="btn btn-primary btn-sm">delete</a>
+            <a href="{% url 'index' %}" class="btn btn-primary btn-sm">list</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

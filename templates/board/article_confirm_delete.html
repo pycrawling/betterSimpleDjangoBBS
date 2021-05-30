@@ -1,0 +1,25 @@
+<!--templates/board/article_confirm_delete.html-->
+{% extends 'base.html' %}
+{% block title %}삭제 - {{object.title}}{% endblock %}
+{% block content %}
+
+<div class="card" style="width: auto;">
+    <div class="card-header">
+        다음 글을 삭제할까요?
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{object.title}}</h5>
+        <small>by {{object.author}}</small>
+        <p style="text-align:right"><small>created at {{object.created_at|date:'Y-m-d, H:i'}}<br>
+            modified at {{object.modified_at|date:'Y-m-d, H:i'}}</small></p>
+        <div class="">
+        </div>
+    </div>
+    <div class="card-footer text-muted text-end">
+        <form method="POST">
+            {%csrf_token%}
+            <input class="btn btn-primary btn-sm" type="submit" value="삭제">
+        </form>
+    </div>
+</div>
+{% endblock %}

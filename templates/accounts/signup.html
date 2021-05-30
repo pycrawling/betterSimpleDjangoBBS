@@ -1,0 +1,25 @@
+<!--templates/accounts/signup.html-->
+{% extends 'base.html' %}
+{% block title %}Sign up{% endblock %}
+{% block content %}
+<style>
+    #id_email{width: 100%; font-size: .875em;}
+    form > input {font-size: .875em;}
+    form > span {margin: 0; font-size: .875em;}
+    form > label {margin: .6rem 0 0 0; font-size: .875em;}
+    form > * {display:block;}
+    form > button {margin: .6rem 0 0 0;}
+</style>
+<div class="card">
+    <div class="card-header">
+        Sign up
+    </div>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_table }}
+            <button class="btn btn-primary btn-sm" type="submit">Sign Up</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

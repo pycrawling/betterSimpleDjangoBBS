@@ -1,16 +1,30 @@
-<!-- templates/registration/login.html -->
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h2>Log In</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Log In</button>
-</form>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}Log In{% endblock %}
+{% block content %}
+<style>
+    #id_username{width: 100%; font-size: .875em;}
+    #id_password{width: 100%; font-size: .875em;}
+    form > label {margin: .6rem 0 0 0; font-size: .875em;}
+    form > button {margin: .6rem 0 0 0;}
+    form > * {display:block;}
+</style>
+<div class="d-flex justify-content-center">
+    <div class="card" style="width: 14rem;">
+        <div class="card-header">
+            Log In
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_table }}
+                <button class="btn btn-primary btn-sm" type="submit">Log In</button>
+            </form>
+        </div>
+        <div class="card-footer text-end">
+            <a class="text-muted" href="/accounts/password_reset/">
+                <small>Password Reset</small>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
