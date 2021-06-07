@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <!-- viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %} - Simple Django BBS</title>
 
     <!-- Bootstrap CSS -->
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"-->
@@ -12,8 +13,7 @@
     <!-- Bootstrap CSS by bootswatch -->
     <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.0.1/dist/lux/bootstrap.min.css" rel="stylesheet"
           crossorigin="anonymous">
-
-    <title>{% block title %}{% endblock %} - Simple Django BBS</title>
+    {% block style %}{% endblock %}
 </head>
 <body>
 <!-- Bootstrap Bundle with Popper -->

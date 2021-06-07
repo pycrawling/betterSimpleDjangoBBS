@@ -1,7 +1,7 @@
 <!--templates/accounts/signup.html-->
 {% extends 'base.html' %}
 {% block title %}Sign up{% endblock %}
-{% block content %}
+{% block style %}
 <style>
     #id_email{width: 100%; font-size: .875em;}
     form > input {font-size: .875em;}
@@ -10,6 +10,8 @@
     form > * {display:block;}
     form > button {margin: .6rem 0 0 0;}
 </style>
+{% endblock %}
+{% block content %}
 <div class="card">
     <div class="card-header">
         Sign up
