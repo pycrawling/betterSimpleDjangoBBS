@@ -33,8 +33,8 @@ class ArticleCreate(LoginRequiredMixin, CreateView):
         return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
-        if form.cleaned_data['author'] != self.current_user:
-            return super().form_invalid(form)
+        # if form.cleaned_data['author'] != self.current_user:
+            # return super().form_invalid(form)
         form.instance.author = self.current_user
         return super().form_valid(form)
 
