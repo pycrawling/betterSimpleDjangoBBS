@@ -26,16 +26,9 @@ class ArticleCreate(LoginRequiredMixin, CreateView):
     model = Article
     success_url = reverse_lazy('index')
     fields = ('title', 'content')
-    current_user = ''
-
-    def dispatch(self, request, *args, **kwargs):
-        self.current_user = request.user
-        return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
-        # if form.cleaned_data['author'] != self.current_user:
-            # return super().form_invalid(form)
-        form.instance.author = self.current_user
+        form.instance.author = self.request.user
         return super().form_valid(form)
 
 
