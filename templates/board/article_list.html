@@ -20,8 +20,8 @@
         <td>{{each.author}}</td>
         <td>{{each.created_at|date:'Y-m-d, H:i'}}</td>
     </tr>
-    </tbody>
     {% endfor %}
+    </tbody>
 </table>
 {% else %}
 <p>an empty list</p>
